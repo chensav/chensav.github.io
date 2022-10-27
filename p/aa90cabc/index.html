@@ -18,24 +18,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="1231231">
   
-    <meta name="description" content="官网地址安装部署12# 执行一键部署脚本curl -sSL https:&#x2F;&#x2F;github.com&#x2F;jumpserver&#x2F;jumpserver&#x2F;releases&#x2F;download&#x2F;v2.6.1&#x2F;quick_start.sh | sh  配置文件1234567891011121314151617181920212223242526272829303132333435363738394041424344">
+    <meta name="description" content="安装 pyinstaller 库1pip install pyinstaller  使用 pyinstaller 打包选项参数        选项 描述   -h，–help 显示帮助信息   -v，–version 显示版本号   –distpath DIR 指定打包后的程序存放目录，默认存放在当前目录下的dist目录   –workpath WORKPATH 为输出的所有临时文件指定存放目录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Centos7 安装 JumpServer">
-<meta property="og:url" content="http://example.com/p/fb0b7d1a/index.html">
+<meta property="og:title" content="使用Pyinstaller打包EXE">
+<meta property="og:url" content="http://example.com/p/aa90cabc/index.html">
 <meta property="og:site_name" content="锤🔨头并进">
-<meta property="og:description" content="官网地址安装部署12# 执行一键部署脚本curl -sSL https:&#x2F;&#x2F;github.com&#x2F;jumpserver&#x2F;jumpserver&#x2F;releases&#x2F;download&#x2F;v2.6.1&#x2F;quick_start.sh | sh  配置文件1234567891011121314151617181920212223242526272829303132333435363738394041424344">
+<meta property="og:description" content="安装 pyinstaller 库1pip install pyinstaller  使用 pyinstaller 打包选项参数        选项 描述   -h，–help 显示帮助信息   -v，–version 显示版本号   –distpath DIR 指定打包后的程序存放目录，默认存放在当前目录下的dist目录   –workpath WORKPATH 为输出的所有临时文件指定存放目录">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/fb0b7d1a.jpg">
-<meta property="article:published_time" content="2022-10-20T10:47:21.000Z">
-<meta property="article:modified_time" content="2022-10-27T02:31:02.975Z">
+<meta property="og:image" content="http://example.com/img/aa90cabc.png">
+<meta property="article:published_time" content="2022-10-27T05:51:33.000Z">
+<meta property="article:modified_time" content="2022-10-27T06:14:20.285Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="工具">
+<meta property="article:tag" content="python安装">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/fb0b7d1a.jpg">
+<meta name="twitter:image" content="http://example.com/img/aa90cabc.png">
   
   
   
-  <title>Centos7 安装 JumpServer - 锤🔨头并进</title>
+  <title>使用Pyinstaller打包EXE - 锤🔨头并进</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -222,13 +223,13 @@
   
 
 <div id="banner" class="banner" false
-     style="background: url('/img/fb0b7d1a.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/aa90cabc.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Centos7 安装 JumpServer"></span>
+            <span id="subtitle" data-typed-text="使用Pyinstaller打包EXE"></span>
           
         </div>
 
@@ -244,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-20 18:47" pubdate>
-          2022年10月20日 晚上
+        <time datetime="2022-10-27 13:51" pubdate>
+          2022年10月27日 下午
         </time>
       </span>
     
@@ -256,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          1.3k 字
         
       </span>
     
@@ -267,7 +268,7 @@
         
         
         
-          17 分钟
+          12 分钟
         
       </span>
     
@@ -313,12 +314,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Centos7 安装 JumpServer</h1>
+            <h1 style="display: none">使用Pyinstaller打包EXE</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：4 小时前
+                    本文最后更新于：2 分钟前
                   
                 
               </p>
@@ -326,14 +327,79 @@
             
               <div class="markdown-body">
                 
-                <h3 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h3><h3 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 执行一键部署脚本</span><br>curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.1/quick_start.sh | sh<br></code></pre></td></tr></table></figure>
+                <h4 id="安装-pyinstaller-库"><a href="#安装-pyinstaller-库" class="headerlink" title="安装 pyinstaller 库"></a>安装 pyinstaller 库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pip install pyinstaller<br></code></pre></td></tr></table></figure>
 
-<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 说明</span><br><span class="hljs-comment">#### 这是项目总的配置文件, 会作为环境变量加载到各个容器中</span><br><span class="hljs-comment">#### 格式必须是 KEY=VALUE 不能有空格等</span><br><br><span class="hljs-comment"># Compose项目设置</span><br>COMPOSE_PROJECT_NAME=jms<br>COMPOSE_HTTP_TIMEOUT=3600<br>DOCKER_CLIENT_TIMEOUT=3600<br>DOCKER_SUBNET=192.168.250.0/24<br><br><span class="hljs-comment">## IPV6</span><br><span class="hljs-comment">#DOCKER_SUBNET_IPV6=2001:db8:10::/64</span><br><span class="hljs-comment">#USE_IPV6=0</span><br><br><span class="hljs-comment">### 持久化目录, 安装启动后不能再修改, 除非移动原来的持久化到新的位置</span><br>VOLUME_DIR=/opt/data/<br><br><span class="hljs-comment">## 是否使用外部MYSQL和REDIS</span><br>USE_EXTERNAL_MYSQL=1<br>USE_EXTERNAL_REDIS=1<br><br><span class="hljs-comment">## Nginx 配置，这个Nginx是用来分发路径到不同的服务</span><br>HTTP_PORT=8080<br>HTTPS_PORT=8443<br>SSH_PORT=2222<br><br><span class="hljs-comment">## LB 配置, 这个Nginx是HA时可以启动负载均衡到不同的主机</span><br>USE_LB=0<br>LB_HTTP_PORT=80<br>LB_HTTPS_PORT=443<br>LB_SSH_PORT=2223<br><br><span class="hljs-comment">## Task 配置</span><br>USE_TASK=1<br><br><span class="hljs-comment">## XPack</span><br>USE_XPACK=0<br><br><br><span class="hljs-comment"># Koko配置</span><br>CORE_HOST=http://121.5.21.20:8080<br>ENABLE_PROXY_PROTOCOL=<span class="hljs-literal">true</span><br><br><br><span class="hljs-comment"># Core 配置</span><br><span class="hljs-comment">### 启动后不能再修改，否则密码等等信息无法解密</span><br>SECRET_KEY=TEJZPgMoeXzo6ojeAuhNLE3s0r77eY1R9px129nqHVcSF9HF2<br>BOOTSTRAP_TOKEN=hank4RTz5QrYqfRW<br>LOG_LEVEL=INFO<br><span class="hljs-comment"># SESSION_COOKIE_AGE=86400</span><br><span class="hljs-comment"># SESSION_EXPIRE_AT_BROWSER_CLOSE=false</span><br><br><span class="hljs-comment">## MySQL数据库配置</span><br>DB_ENGINE=mysql<br>DB_HOST=172.17.0.7<br>DB_PORT=3306<br>DB_USER=root<br>DB_PASSWORD=7223c5a94dc4b691<br>DB_NAME=jumpserver<br><br><span class="hljs-comment">## Redis配置</span><br>REDIS_HOST=172.17.0.7<br>REDIS_PASSWORD=12345678<br><br><span class="hljs-comment">### Keycloak 配置方式</span><br><span class="hljs-comment">### AUTH_OPENID=true</span><br><span class="hljs-comment">### BASE_SITE_URL=https://jumpserver.company.com/</span><br><span class="hljs-comment">### AUTH_OPENID_SERVER_URL=https://keycloak.company.com/auth</span><br><span class="hljs-comment">### AUTH_OPENID_REALM_NAME=cmp</span><br><span class="hljs-comment">### AUTH_OPENID_CLIENT_ID=jumpserver</span><br><span class="hljs-comment">### AUTH_OPENID_CLIENT_SECRET=</span><br><span class="hljs-comment">### AUTH_OPENID_SHARE_SESSION=true</span><br><span class="hljs-comment">### AUTH_OPENID_IGNORE_SSL_VERIFICATION=true</span><br><br><br><span class="hljs-comment"># Guacamole 配置</span><br>JUMPSERVER_SERVER=http://121.5.21.20:8080<br>JUMPSERVER_KEY_DIR=/config/guacamole/data/key/<br>JUMPSERVER_RECORD_PATH=/config/guacamole/data/record/<br>JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive/<br>JUMPSERVER_ENABLE_DRIVE=<span class="hljs-literal">true</span><br>JUMPSERVER_CLEAR_DRIVE_SESSION=<span class="hljs-literal">true</span><br>JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24<br><br><span class="hljs-comment"># Mysql 容器配置</span><br>MYSQL_ROOT_PASSWORD=7223c5a94dc4b691<br>MYSQL_DATABASE=jumpserver<br>REDIS_PORT=6379<br><br></code></pre></td></tr></table></figure>
+<h4 id="使用-pyinstaller-打包"><a href="#使用-pyinstaller-打包" class="headerlink" title="使用 pyinstaller 打包"></a>使用 pyinstaller 打包</h4><h5 id="选项参数"><a href="#选项参数" class="headerlink" title="选项参数"></a>选项参数</h5><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>选项</td>
+<td>描述</td>
+</tr>
+<tr>
+<td>-h，–help</td>
+<td>显示帮助信息</td>
+</tr>
+<tr>
+<td>-v，–version</td>
+<td>显示版本号</td>
+</tr>
+<tr>
+<td>–distpath DIR</td>
+<td>指定打包后的程序存放目录，默认存放在当前目录下的dist目录</td>
+</tr>
+<tr>
+<td>–workpath WORKPATH</td>
+<td>为输出的所有临时文件指定存放目录</td>
+</tr>
+<tr>
+<td>–clean</td>
+<td>在构建之前，请清理PyInstaller缓存并删除临时文件</td>
+</tr>
+<tr>
+<td>-D，–onedir</td>
+<td>生成结果是一个包含exe程序的目录，所有第三方依赖库和其他资源和exe程序位于同一目录下</td>
+</tr>
+<tr>
+<td>-F，–onefile</td>
+<td>生成结果是一个exe程序，所有第三方依赖库和其他资源都被打包进该exe程序中—</td>
+</tr>
+<tr>
+<td>–key</td>
+<td>对打包进行加密处理</td>
+</tr>
+</tbody></table>
+<h4 id="反编译Pyinstaller打包的exe"><a href="#反编译Pyinstaller打包的exe" class="headerlink" title="反编译Pyinstaller打包的exe"></a>反编译Pyinstaller打包的exe</h4><p>这样的exe已经可以被迁移到别的电脑上使用了，如果是为了方便其他电脑使用，到这一步就已经结束了。但有时候，我们可能是把这个功能给很多人用，但如果不想开源或者被别人破解，到这一步是还不够的。因为到这一步的exe是可以被别人反编译出源码的</p>
+<h5 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h5><p>exe反编译工具：<a target="_blank" rel="noopener" href="https://nchc.dl.sourceforge.net/project/pyinstallerextractor/dist/pyinstxtractor.py">pyinstxtractor.py</a></p>
+<p>pyc反编译工具：Easy Python Decompiler 或者在线反编译pyc。</p>
+<p>将pyinstxtractor.py放到exe文件相同目录，执行以下cmd命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">python pyinstxtractor.py main.exe<br></code></pre></td></tr></table></figure>
 
-<p>Mysql和 Redis 的ip要使用本机内网ip</p>
-<h4 id="查看本机内网ip方法"><a href="#查看本机内网ip方法" class="headerlink" title="查看本机内网ip方法"></a>查看本机内网ip方法</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ifconfig<br></code></pre></td></tr></table></figure>
+<h5 id="将脚本编译为pyd以防止反编译"><a href="#将脚本编译为pyd以防止反编译" class="headerlink" title="将脚本编译为pyd以防止反编译"></a>将脚本编译为pyd以防止反编译</h5><p>如何解决呢，可以考虑将模块py文件编译为动态链接库，这样破解难度将大大增加。其中，在python里，pyd格式即动态链接库。使用cython即可编译，如果是anaconda是自带，python有的可能不带cython，安装即可：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">pip install Cython<br></code></pre></td></tr></table></figure>
 
-<p><img src="https://secure2.wostatic.cn/static/iMJj5ZrK3z9KcDgXbKqp32/7cdf2452d5d775b7939f175fcf5f5cd.png?auth_key=1666262665-fgKtPwDGHCMZKG6hUq9Gie-0-85e5b9d14da85363e617548a0ddf37bf" srcset="/img/loading.gif" lazyload></p>
+<p>我们在main.py所在的文件夹新建py文件，在此处我命名为build_pyd.py，其内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Bash">from distutils.core import setup<br>from Cython.Build import cythonize<br> <br>setup(<br> name = <span class="hljs-string">&#x27;any words.....&#x27;</span>,<br> ext_modules = cythonize([<span class="hljs-string">&quot;mylib.py&quot;</span>,]<br> ),<br>)<br></code></pre></td></tr></table></figure>
+
+<p>然后执行以下cmd命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">python build_pyd.py build_ext --inplace --compiler=msvc<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://secure2.wostatic.cn/static/gpJ7WDs1PzZPVYgLW4afh6/1.png?auth_key=1666849858-w5TSXGW7NH7pFjvMVgjDsD-0-f9ef744989c530f45774ba22b25028cb" srcset="/img/loading.gif" lazyload></p>
+<p>此时就会多出一个pyd后缀文件，修改文件名，然后我们删除build、disk文件夹，重复步骤二，再次编译为exe即可。</p>
+<h4 id="错误问题"><a href="#错误问题" class="headerlink" title="错误问题"></a>错误问题</h4><h5 id="执行出现-unable-to-find-vcvarsall-bat"><a href="#执行出现-unable-to-find-vcvarsall-bat" class="headerlink" title="执行出现 unable to find vcvarsall.bat"></a>执行出现 unable to find vcvarsall.bat</h5><blockquote>
+<p>安装Visual C++ Build Tools 2015/2017 即可 <a target="_blank" rel="noopener" href="http://go.microsoft.com/fwlink/?LinkId=691126">下载地址</a></p>
+</blockquote>
+<h5 id="打包出现问题"><a href="#打包出现问题" class="headerlink" title="打包出现问题"></a>打包出现问题</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment">#升级pip</span><br>python -m pip install --upgrade pip<br><br><span class="hljs-comment"># 重新安装</span><br>pip install pyinstaller<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h5><p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/184725.htm">https://www.jb51.net/article/184725.htm</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013451076/article/details/105815788">https://blog.csdn.net/u013451076/article/details/105815788</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jb51.net/article/184725.htm">https://www.jb51.net/article/184725.htm</a></p>
 
                 
               </div>
@@ -352,7 +418,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
   
   
 
@@ -369,6 +435,8 @@
       
         <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
       
+        <a href="/tags/python%E5%AE%89%E8%A3%85/">#python安装</a>
+      
     </div>
   
 </div>
@@ -381,15 +449,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/p/f79433d6/" title="Centos安装Python3.8">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Centos安装Python3.8</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/p/6297bd55/" title="Laravel项目创建">
+                        <span class="hidden-mobile">Laravel项目创建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
