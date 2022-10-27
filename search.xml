@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>爬虫工具推荐</title>
-    <url>/p/fb0b7d1a.html</url>
+    <title>Centos7 安装 JumpServer</title>
+    <url>/p/fb0b7d1a/</url>
     <content><![CDATA[<h3 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h3><h3 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 执行一键部署脚本</span><br>curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.1/quick_start.sh | sh<br></code></pre></td></tr></table></figure>
 
 <h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 说明</span><br><span class="hljs-comment">#### 这是项目总的配置文件, 会作为环境变量加载到各个容器中</span><br><span class="hljs-comment">#### 格式必须是 KEY=VALUE 不能有空格等</span><br><br><span class="hljs-comment"># Compose项目设置</span><br>COMPOSE_PROJECT_NAME=jms<br>COMPOSE_HTTP_TIMEOUT=3600<br>DOCKER_CLIENT_TIMEOUT=3600<br>DOCKER_SUBNET=192.168.250.0/24<br><br><span class="hljs-comment">## IPV6</span><br><span class="hljs-comment">#DOCKER_SUBNET_IPV6=2001:db8:10::/64</span><br><span class="hljs-comment">#USE_IPV6=0</span><br><br><span class="hljs-comment">### 持久化目录, 安装启动后不能再修改, 除非移动原来的持久化到新的位置</span><br>VOLUME_DIR=/opt/data/<br><br><span class="hljs-comment">## 是否使用外部MYSQL和REDIS</span><br>USE_EXTERNAL_MYSQL=1<br>USE_EXTERNAL_REDIS=1<br><br><span class="hljs-comment">## Nginx 配置，这个Nginx是用来分发路径到不同的服务</span><br>HTTP_PORT=8080<br>HTTPS_PORT=8443<br>SSH_PORT=2222<br><br><span class="hljs-comment">## LB 配置, 这个Nginx是HA时可以启动负载均衡到不同的主机</span><br>USE_LB=0<br>LB_HTTP_PORT=80<br>LB_HTTPS_PORT=443<br>LB_SSH_PORT=2223<br><br><span class="hljs-comment">## Task 配置</span><br>USE_TASK=1<br><br><span class="hljs-comment">## XPack</span><br>USE_XPACK=0<br><br><br><span class="hljs-comment"># Koko配置</span><br>CORE_HOST=http://121.5.21.20:8080<br>ENABLE_PROXY_PROTOCOL=<span class="hljs-literal">true</span><br><br><br><span class="hljs-comment"># Core 配置</span><br><span class="hljs-comment">### 启动后不能再修改，否则密码等等信息无法解密</span><br>SECRET_KEY=TEJZPgMoeXzo6ojeAuhNLE3s0r77eY1R9px129nqHVcSF9HF2<br>BOOTSTRAP_TOKEN=hank4RTz5QrYqfRW<br>LOG_LEVEL=INFO<br><span class="hljs-comment"># SESSION_COOKIE_AGE=86400</span><br><span class="hljs-comment"># SESSION_EXPIRE_AT_BROWSER_CLOSE=false</span><br><br><span class="hljs-comment">## MySQL数据库配置</span><br>DB_ENGINE=mysql<br>DB_HOST=172.17.0.7<br>DB_PORT=3306<br>DB_USER=root<br>DB_PASSWORD=7223c5a94dc4b691<br>DB_NAME=jumpserver<br><br><span class="hljs-comment">## Redis配置</span><br>REDIS_HOST=172.17.0.7<br>REDIS_PASSWORD=12345678<br><br><span class="hljs-comment">### Keycloak 配置方式</span><br><span class="hljs-comment">### AUTH_OPENID=true</span><br><span class="hljs-comment">### BASE_SITE_URL=https://jumpserver.company.com/</span><br><span class="hljs-comment">### AUTH_OPENID_SERVER_URL=https://keycloak.company.com/auth</span><br><span class="hljs-comment">### AUTH_OPENID_REALM_NAME=cmp</span><br><span class="hljs-comment">### AUTH_OPENID_CLIENT_ID=jumpserver</span><br><span class="hljs-comment">### AUTH_OPENID_CLIENT_SECRET=</span><br><span class="hljs-comment">### AUTH_OPENID_SHARE_SESSION=true</span><br><span class="hljs-comment">### AUTH_OPENID_IGNORE_SSL_VERIFICATION=true</span><br><br><br><span class="hljs-comment"># Guacamole 配置</span><br>JUMPSERVER_SERVER=http://121.5.21.20:8080<br>JUMPSERVER_KEY_DIR=/config/guacamole/data/key/<br>JUMPSERVER_RECORD_PATH=/config/guacamole/data/record/<br>JUMPSERVER_DRIVE_PATH=/config/guacamole/data/drive/<br>JUMPSERVER_ENABLE_DRIVE=<span class="hljs-literal">true</span><br>JUMPSERVER_CLEAR_DRIVE_SESSION=<span class="hljs-literal">true</span><br>JUMPSERVER_CLEAR_DRIVE_SCHEDULE=24<br><br><span class="hljs-comment"># Mysql 容器配置</span><br>MYSQL_ROOT_PASSWORD=7223c5a94dc4b691<br>MYSQL_DATABASE=jumpserver<br>REDIS_PORT=6379<br><br></code></pre></td></tr></table></figure>
@@ -13,10 +13,105 @@
 <p><img src="https://secure2.wostatic.cn/static/iMJj5ZrK3z9KcDgXbKqp32/7cdf2452d5d775b7939f175fcf5f5cd.png?auth_key=1666262665-fgKtPwDGHCMZKG6hUq9Gie-0-85e5b9d14da85363e617548a0ddf37bf"></p>
 ]]></content>
       <categories>
-        <category>文章分类</category>
+        <category>笔记</category>
       </categories>
       <tags>
-        <tag>标签</tag>
+        <tag>工具</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos安装Python3.8</title>
+    <url>/p/f79433d6/</url>
+    <content><![CDATA[<blockquote>
+<p>新买一台服务器通常是只安装了python2.7版本的，我想安装python3.8版本，详细安装教程如下</p>
+</blockquote>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><p>编译python源码的时候需要用到</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make libffi-devel<br></code></pre></td></tr></table></figure>
+
+<h4 id="下载-Python-源码包"><a href="#下载-Python-源码包" class="headerlink" title="下载 Python 源码包"></a>下载 Python 源码包</h4><blockquote>
+<p>如果没有安装 wget 请先去安装  yum install wget</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">wget https://www.python.org/ftp/python/3.8.1/Python-3.8.1.tgz<br></code></pre></td></tr></table></figure>
+
+<h4 id="解压安装"><a href="#解压安装" class="headerlink" title="解压安装"></a>解压安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 解压压缩包</span><br>tar -zxvf Python-3.8.1.tgz  <br><br><span class="hljs-comment"># 配置安装位置</span><br>./configure prefix=/usr/local/python3<br><br><span class="hljs-comment"># 安装</span><br>make &amp;&amp; make install<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>如果没有报错表示安装成功</p>
+</blockquote>
+<h4 id="添加软链接"><a href="#添加软链接" class="headerlink" title="添加软链接"></a>添加软链接</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#添加python3的软链接 </span><br><span class="hljs-built_in">ln</span> -s /usr/local/python3/bin/python3.8 /usr/bin/python3 <br><br><span class="hljs-comment">#添加 pip3 的软链接 </span><br><span class="hljs-built_in">ln</span> -s /usr/local/python3/bin/pip3.8 /usr/bin/pip3<br></code></pre></td></tr></table></figure>
+
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><blockquote>
+<p>出现下面页面表示安装成功</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@iZwz9gt6l3aw8d5732xn69Z ~]<span class="hljs-comment"># python3 -V</span><br>Python 3.8.1<br>[root@iZwz9gt6l3aw8d5732xn69Z ~]<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Centos</tag>
+        <tag>安装</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos安装配置Docker</title>
+    <url>/p/4ff9dde3/</url>
+    <content><![CDATA[<h3 id="卸载旧版本的Docker"><a href="#卸载旧版本的Docker" class="headerlink" title="卸载旧版本的Docker"></a>卸载旧版本的Docker</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">yum remove docker \<br>                  docker-client \<br>                  docker-client-latest \<br>                  docker-common \<br>                  docker-latest \<br>                  docker-latest-logrotate \<br>                  docker-logrotate \<br>                  docker-selinux \<br>                  docker-engine-selinux \<br>                  docker-engine<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用-yum-安装Docker"><a href="#使用-yum-安装Docker" class="headerlink" title="使用 yum 安装Docker"></a>使用 yum 安装Docker</h3><h4 id="执行以下命令安装依赖包："><a href="#执行以下命令安装依赖包：" class="headerlink" title="执行以下命令安装依赖包："></a>执行以下命令安装依赖包：</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">yum install -y yum-utils<br></code></pre></td></tr></table></figure>
+
+<h4 id="yum软件源"><a href="#yum软件源" class="headerlink" title="yum软件源"></a>yum软件源</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">yum-config-manager \<br>    --add-repo \<br>    https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br>   <br>sed -i <span class="hljs-string">&#x27;s/download.docker.com/mirrors.aliyun.com\/docker-ce/g&#x27;</span> /etc/yum.repos.d/docker-ce.repo<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">yum install docker-ce docker-ce-cli containerd.io<br></code></pre></td></tr></table></figure>
+
+<h4 id="CentOS8-额外设置"><a href="#CentOS8-额外设置" class="headerlink" title="CentOS8 额外设置"></a>CentOS8 额外设置</h4><p>由于 CentOS8 防火墙使用了 <code>nftables</code>，但 Docker 尚未支持 <code>nftables</code>， 我们可以使用如下设置使用 <code>iptables</code>：</p>
+<p>更改 <code>/etc/firewalld/firewalld.conf</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># FirewallBackend=nftables</span><br>FirewallBackend=iptables<br></code></pre></td></tr></table></figure>
+
+<p>或者执行如下命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">firewall-cmd --permanent --zone=trusted --add-interface=docker0<br>firewall-cmd --reload<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用脚本自动安装"><a href="#使用脚本自动安装" class="headerlink" title="使用脚本自动安装"></a>使用脚本自动安装</h3><p>在测试或开发环境中 Docker 官方为了简化安装流程，提供了一套便捷的安装脚本，CentOS 系统上可以使用这套脚本安装，另外可以通过 <code>--mirror</code> 选项使用国内源进行安装：</p>
+<p>若你想安装测试版的 Docker, 请从 <a href="http://test.docker.com/">test.docker.com</a> 获取脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">curl -fsSL get.docker.com -o get-docker.sh<br>sh get-docker.sh --mirror Aliyun<br><br></code></pre></td></tr></table></figure>
+
+<p>执行这个命令后，脚本就会自动的将一切准备工作做好，并且把 Docker 的稳定(stable)版本安装在系统中。</p>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>Centos</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网址记录</title>
+    <url>/p/78db8bbb/</url>
+    <content><![CDATA[<h4 id="图片工具"><a href="#图片工具" class="headerlink" title="图片工具"></a>图片工具</h4><p><a href="https://www.jianshu.com/p/5b0cd08fadf1">不错的配图网址</a><br><a href="https://www.iloveimg.com/zh-cn">图片压缩网址</a></p>
+]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Laravel项目创建</title>
+    <url>/p/6297bd55/</url>
+    <content><![CDATA[<h3 id="安装laravel"><a href="#安装laravel" class="headerlink" title="安装laravel"></a>安装laravel</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer create-project laravel/laravel Laravel --prefer-dist <span class="hljs-string">&quot;8.5.*&quot;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="安装-Dcat-Admin-后台"><a href="#安装-Dcat-Admin-后台" class="headerlink" title="安装 Dcat Admin 后台"></a>安装 Dcat Admin 后台</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require dcat/laravel-admin:<span class="hljs-string">&quot;2.*&quot;</span> -vvv<br><br>php artisan admin:publish<br><br>php artisan admin:install<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="安装辅助工具"><a href="#安装辅助工具" class="headerlink" title="安装辅助工具"></a>安装辅助工具</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require barryvdh/laravel-ide-helper --dev<br><br><span class="hljs-comment"># 如果只想在开发环境安装请加上 --dev</span><br>composer require <span class="hljs-string">&quot;doctrine/dbal: ~2.3&quot;</span> --dev<br><br><span class="hljs-comment"># 导出配置文件</span><br>php artisan vendor:publish --provider=<span class="hljs-string">&quot;Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider&quot;</span> --tag=config<br><br><span class="hljs-comment"># 为 Facades 生成注释</span><br>php artisan ide-helper:generate <br><br><span class="hljs-comment"># 为数据模型生成注释</span><br>php artisan ide-helper:models<br><br><span class="hljs-comment"># 生成 PhpStorm Meta file</span><br>php artisan ide-helper:meta<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>Laravel</tag>
+        <tag>记录</tag>
       </tags>
   </entry>
 </search>
