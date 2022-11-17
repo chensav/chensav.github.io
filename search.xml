@@ -112,6 +112,23 @@
       </tags>
   </entry>
   <entry>
+    <title>Laravel项目创建</title>
+    <url>/p/6297bd55/</url>
+    <content><![CDATA[<h3 id="安装laravel"><a href="#安装laravel" class="headerlink" title="安装laravel"></a>安装laravel</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer create-project laravel/laravel Laravel --prefer-dist <span class="hljs-string">&quot;8.5.*&quot;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="安装-Dcat-Admin-后台"><a href="#安装-Dcat-Admin-后台" class="headerlink" title="安装 Dcat Admin 后台"></a>安装 Dcat Admin 后台</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require dcat/laravel-admin:<span class="hljs-string">&quot;2.*&quot;</span> -vvv<br><br>php artisan admin:publish<br><br>php artisan admin:install<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="安装辅助工具"><a href="#安装辅助工具" class="headerlink" title="安装辅助工具"></a>安装辅助工具</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require barryvdh/laravel-ide-helper --dev<br><br><span class="hljs-comment"># 如果只想在开发环境安装请加上 --dev</span><br>composer require <span class="hljs-string">&quot;doctrine/dbal: ~2.3&quot;</span> --dev<br><br><span class="hljs-comment"># 导出配置文件</span><br>php artisan vendor:publish --provider=<span class="hljs-string">&quot;Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider&quot;</span> --tag=config<br><br><span class="hljs-comment"># 为 Facades 生成注释</span><br>php artisan ide-helper:generate <br><br><span class="hljs-comment"># 为数据模型生成注释</span><br>php artisan ide-helper:models<br><br><span class="hljs-comment"># 生成 PhpStorm Meta file</span><br>php artisan ide-helper:meta<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>Laravel</tag>
+        <tag>记录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL8.0关闭log-bin功能</title>
     <url>/p/bf2717e6/</url>
     <content><![CDATA[<h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>用来记录数据发生或潜在发生更改的SQL语句，并已二进制形式保存到磁盘中，例如更改数据库表和更改内容的SQL语句都会记录到binlog里，但是对库表等内容的查询不会记录。</p>
@@ -134,20 +151,18 @@
       </tags>
   </entry>
   <entry>
-    <title>Laravel项目创建</title>
-    <url>/p/6297bd55/</url>
-    <content><![CDATA[<h3 id="安装laravel"><a href="#安装laravel" class="headerlink" title="安装laravel"></a>安装laravel</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer create-project laravel/laravel Laravel --prefer-dist <span class="hljs-string">&quot;8.5.*&quot;</span><br><br></code></pre></td></tr></table></figure>
-
-<h3 id="安装-Dcat-Admin-后台"><a href="#安装-Dcat-Admin-后台" class="headerlink" title="安装 Dcat Admin 后台"></a>安装 Dcat Admin 后台</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require dcat/laravel-admin:<span class="hljs-string">&quot;2.*&quot;</span> -vvv<br><br>php artisan admin:publish<br><br>php artisan admin:install<br><br></code></pre></td></tr></table></figure>
-
-<h3 id="安装辅助工具"><a href="#安装辅助工具" class="headerlink" title="安装辅助工具"></a>安装辅助工具</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require barryvdh/laravel-ide-helper --dev<br><br><span class="hljs-comment"># 如果只想在开发环境安装请加上 --dev</span><br>composer require <span class="hljs-string">&quot;doctrine/dbal: ~2.3&quot;</span> --dev<br><br><span class="hljs-comment"># 导出配置文件</span><br>php artisan vendor:publish --provider=<span class="hljs-string">&quot;Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider&quot;</span> --tag=config<br><br><span class="hljs-comment"># 为 Facades 生成注释</span><br>php artisan ide-helper:generate <br><br><span class="hljs-comment"># 为数据模型生成注释</span><br>php artisan ide-helper:models<br><br><span class="hljs-comment"># 生成 PhpStorm Meta file</span><br>php artisan ide-helper:meta<br></code></pre></td></tr></table></figure>
+    <title>PHP常用库记录</title>
+    <url>/p/aa90cab1/</url>
+    <content><![CDATA[<h4 id="生成推荐邀请码"><a href="#生成推荐邀请码" class="headerlink" title="生成推荐邀请码"></a>生成推荐邀请码</h4><ul>
+<li><a href="https://packagist.org/packages/hashids/hashids">hashids/hashids</a></li>
+</ul>
 ]]></content>
       <categories>
         <category>PHP</category>
       </categories>
       <tags>
-        <tag>Laravel</tag>
-        <tag>记录</tag>
+        <tag>工具</tag>
+        <tag>Composer</tag>
       </tags>
   </entry>
   <entry>
@@ -162,6 +177,19 @@
       <tags>
         <tag>python问题</tag>
         <tag>supervisor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网址记录</title>
+    <url>/p/78db8bbb/</url>
+    <content><![CDATA[<h4 id="图片工具"><a href="#图片工具" class="headerlink" title="图片工具"></a>图片工具</h4><p><a href="https://www.jianshu.com/p/5b0cd08fadf1">不错的配图网址</a><br><a href="https://www.liulinblog.com/47979.html">好用的配图网址</a><br><a href="https://www.iloveimg.com/zh-cn">图片压缩网址</a></p>
+]]></content>
+      <categories>
+        <category>记录</category>
+      </categories>
+      <tags>
+        <tag>随笔</tag>
+        <tag>笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -247,34 +275,6 @@
       <tags>
         <tag>工具</tag>
         <tag>python安装</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP常用库记录</title>
-    <url>/p/aa90cab1/</url>
-    <content><![CDATA[<h4 id="生成推荐邀请码"><a href="#生成推荐邀请码" class="headerlink" title="生成推荐邀请码"></a>生成推荐邀请码</h4><ul>
-<li><a href="https://packagist.org/packages/hashids/hashids">hashids/hashids</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>Composer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>网址记录</title>
-    <url>/p/78db8bbb/</url>
-    <content><![CDATA[<h4 id="图片工具"><a href="#图片工具" class="headerlink" title="图片工具"></a>图片工具</h4><p><a href="https://www.jianshu.com/p/5b0cd08fadf1">不错的配图网址</a><br><a href="https://www.liulinblog.com/47979.html">好用的配图网址</a><br><a href="https://www.iloveimg.com/zh-cn">图片压缩网址</a></p>
-]]></content>
-      <categories>
-        <category>记录</category>
-      </categories>
-      <tags>
-        <tag>随笔</tag>
-        <tag>笔记</tag>
       </tags>
   </entry>
 </search>
