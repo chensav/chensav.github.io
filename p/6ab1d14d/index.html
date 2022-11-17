@@ -25,14 +25,14 @@
 <meta property="og:site_name" content="锤🔨头并进">
 <meta property="og:description" content="CLI 执行环境的 PHP 版本切换 切换 cli 运行模式默认的 PHP 版本 （选择8.0） 1update-alternatives --config php 切换 phpize 版本（选择8.0） 1update-alternatives --config phpize 切换 php-config 版本（选择8.0） 1update-alternatives --config php-co">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/6ab1d14d.png">
+<meta property="og:image" content="https://image.chensav.top/blog/6ab1d14d.png">
 <meta property="article:published_time" content="2022-11-17T03:50:35.000Z">
-<meta property="article:modified_time" content="2022-11-17T05:29:37.814Z">
+<meta property="article:modified_time" content="2022-11-17T06:23:57.494Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="工具">
 <meta property="article:tag" content="Homestead">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/6ab1d14d.png">
+<meta name="twitter:image" content="https://image.chensav.top/blog/6ab1d14d.png">
   
   
   
@@ -223,7 +223,7 @@
   
 
 <div id="banner" class="banner" false
-     style="background: url('/img/6ab1d14d.png') no-repeat center center; background-size: cover;">
+     style="background: url('https://image.chensav.top/blog/6ab1d14d.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -319,7 +319,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：44 分钟前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -337,7 +337,7 @@
 <li><p>切换 phpdbg 版本（选择8.0）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">update-alternatives --config phpdbg<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h4 id="查看最新环境变量-（我这边用的是8-1）"><a href="#查看最新环境变量-（我这边用的是8-1）" class="headerlink" title="查看最新环境变量 （我这边用的是8.1）"></a>查看最新环境变量 （我这边用的是8.1）</h4><p>可以看到所有已经换成了8.1了<br><img src="/source/img/6ab1d14d-1.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="查看最新环境变量-（我这边用的是8-1）"><a href="#查看最新环境变量-（我这边用的是8-1）" class="headerlink" title="查看最新环境变量 （我这边用的是8.1）"></a>查看最新环境变量 （我这边用的是8.1）</h4><p>可以看到所有已经换成了8.1了<br><img src="https://image.chensav.top/blog/6ab1d14d-1.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="安装swoole"><a href="#安装swoole" class="headerlink" title="安装swoole"></a>安装swoole</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">pecl install swoole<br><br><span class="hljs-comment"># 创建配置文件</span><br>vim /etc/php/8.1/mods-available/swoole.ini<br><br><span class="hljs-comment"># 写入配置</span><br>extension=swoole.so<br><br><span class="hljs-comment">#通过软链接启用配置</span><br><span class="hljs-built_in">ln</span> -s /etc/php/8.1/mods-available/swoole.ini /etc/php/8.1/cli/conf.d/20-swoole.ini<br></code></pre></td></tr></table></figure>
 
 <h4 id="查看安装状态"><a href="#查看安装状态" class="headerlink" title="查看安装状态"></a>查看安装状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">php -m | grep swoole<br><br><span class="hljs-comment"># 有打印表示安装完成</span><br>swoole<br></code></pre></td></tr></table></figure>

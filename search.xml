@@ -53,23 +53,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Laravel项目创建</title>
-    <url>/p/6297bd55/</url>
-    <content><![CDATA[<h3 id="安装laravel"><a href="#安装laravel" class="headerlink" title="安装laravel"></a>安装laravel</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer create-project laravel/laravel Laravel --prefer-dist <span class="hljs-string">&quot;8.5.*&quot;</span><br><br></code></pre></td></tr></table></figure>
-
-<h3 id="安装-Dcat-Admin-后台"><a href="#安装-Dcat-Admin-后台" class="headerlink" title="安装 Dcat Admin 后台"></a>安装 Dcat Admin 后台</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require dcat/laravel-admin:<span class="hljs-string">&quot;2.*&quot;</span> -vvv<br><br>php artisan admin:publish<br><br>php artisan admin:install<br><br></code></pre></td></tr></table></figure>
-
-<h3 id="安装辅助工具"><a href="#安装辅助工具" class="headerlink" title="安装辅助工具"></a>安装辅助工具</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require barryvdh/laravel-ide-helper --dev<br><br><span class="hljs-comment"># 如果只想在开发环境安装请加上 --dev</span><br>composer require <span class="hljs-string">&quot;doctrine/dbal: ~2.3&quot;</span> --dev<br><br><span class="hljs-comment"># 导出配置文件</span><br>php artisan vendor:publish --provider=<span class="hljs-string">&quot;Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider&quot;</span> --tag=config<br><br><span class="hljs-comment"># 为 Facades 生成注释</span><br>php artisan ide-helper:generate <br><br><span class="hljs-comment"># 为数据模型生成注释</span><br>php artisan ide-helper:models<br><br><span class="hljs-comment"># 生成 PhpStorm Meta file</span><br>php artisan ide-helper:meta<br></code></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>Laravel</tag>
-        <tag>记录</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Centos安装配置Docker</title>
     <url>/p/4ff9dde3/</url>
     <content><![CDATA[<h3 id="卸载旧版本的Docker"><a href="#卸载旧版本的Docker" class="headerlink" title="卸载旧版本的Docker"></a>卸载旧版本的Docker</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">yum remove docker \<br>                  docker-client \<br>                  docker-client-latest \<br>                  docker-common \<br>                  docker-latest \<br>                  docker-latest-logrotate \<br>                  docker-logrotate \<br>                  docker-selinux \<br>                  docker-engine-selinux \<br>                  docker-engine<br></code></pre></td></tr></table></figure>
@@ -102,6 +85,38 @@
       </tags>
   </entry>
   <entry>
+    <title>Laravel项目创建</title>
+    <url>/p/6297bd55/</url>
+    <content><![CDATA[<h3 id="安装laravel"><a href="#安装laravel" class="headerlink" title="安装laravel"></a>安装laravel</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer create-project laravel/laravel Laravel --prefer-dist <span class="hljs-string">&quot;8.5.*&quot;</span><br><br></code></pre></td></tr></table></figure>
+
+<h3 id="安装-Dcat-Admin-后台"><a href="#安装-Dcat-Admin-后台" class="headerlink" title="安装 Dcat Admin 后台"></a>安装 Dcat Admin 后台</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require dcat/laravel-admin:<span class="hljs-string">&quot;2.*&quot;</span> -vvv<br><br>php artisan admin:publish<br><br>php artisan admin:install<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="安装辅助工具"><a href="#安装辅助工具" class="headerlink" title="安装辅助工具"></a>安装辅助工具</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs Bash">composer require barryvdh/laravel-ide-helper --dev<br><br><span class="hljs-comment"># 如果只想在开发环境安装请加上 --dev</span><br>composer require <span class="hljs-string">&quot;doctrine/dbal: ~2.3&quot;</span> --dev<br><br><span class="hljs-comment"># 导出配置文件</span><br>php artisan vendor:publish --provider=<span class="hljs-string">&quot;Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider&quot;</span> --tag=config<br><br><span class="hljs-comment"># 为 Facades 生成注释</span><br>php artisan ide-helper:generate <br><br><span class="hljs-comment"># 为数据模型生成注释</span><br>php artisan ide-helper:models<br><br><span class="hljs-comment"># 生成 PhpStorm Meta file</span><br>php artisan ide-helper:meta<br></code></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>Laravel</tag>
+        <tag>记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PHP常用库记录</title>
+    <url>/p/aa90cab1/</url>
+    <content><![CDATA[<h4 id="生成推荐邀请码"><a href="#生成推荐邀请码" class="headerlink" title="生成推荐邀请码"></a>生成推荐邀请码</h4><ul>
+<li><a href="https://packagist.org/packages/hashids/hashids">hashids/hashids</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>工具</tag>
+        <tag>Composer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Homestead环境安装swoole问题</title>
     <url>/p/6ab1d14d/</url>
     <content><![CDATA[<h4 id="CLI-执行环境的-PHP-版本切换"><a href="#CLI-执行环境的-PHP-版本切换" class="headerlink" title="CLI 执行环境的 PHP 版本切换"></a>CLI 执行环境的 PHP 版本切换</h4><ol>
@@ -114,7 +129,7 @@
 <li><p>切换 phpdbg 版本（选择8.0）</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">update-alternatives --config phpdbg<br></code></pre></td></tr></table></figure></li>
 </ol>
-<h4 id="查看最新环境变量-（我这边用的是8-1）"><a href="#查看最新环境变量-（我这边用的是8-1）" class="headerlink" title="查看最新环境变量 （我这边用的是8.1）"></a>查看最新环境变量 （我这边用的是8.1）</h4><p>可以看到所有已经换成了8.1了<br><img src="/source/img/6ab1d14d-1.png"></p>
+<h4 id="查看最新环境变量-（我这边用的是8-1）"><a href="#查看最新环境变量-（我这边用的是8-1）" class="headerlink" title="查看最新环境变量 （我这边用的是8.1）"></a>查看最新环境变量 （我这边用的是8.1）</h4><p>可以看到所有已经换成了8.1了<br><img src="https://image.chensav.top/blog/6ab1d14d-1.png"></p>
 <h4 id="安装swoole"><a href="#安装swoole" class="headerlink" title="安装swoole"></a>安装swoole</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">pecl install swoole<br><br><span class="hljs-comment"># 创建配置文件</span><br>vim /etc/php/8.1/mods-available/swoole.ini<br><br><span class="hljs-comment"># 写入配置</span><br>extension=swoole.so<br><br><span class="hljs-comment">#通过软链接启用配置</span><br><span class="hljs-built_in">ln</span> -s /etc/php/8.1/mods-available/swoole.ini /etc/php/8.1/cli/conf.d/20-swoole.ini<br></code></pre></td></tr></table></figure>
 
 <h4 id="查看安装状态"><a href="#查看安装状态" class="headerlink" title="查看安装状态"></a>查看安装状态</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">php -m | grep swoole<br><br><span class="hljs-comment"># 有打印表示安装完成</span><br>swoole<br></code></pre></td></tr></table></figure>
@@ -148,21 +163,6 @@
       </categories>
       <tags>
         <tag>Mysql8.0</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PHP常用库记录</title>
-    <url>/p/aa90cab1/</url>
-    <content><![CDATA[<h4 id="生成推荐邀请码"><a href="#生成推荐邀请码" class="headerlink" title="生成推荐邀请码"></a>生成推荐邀请码</h4><ul>
-<li><a href="https://packagist.org/packages/hashids/hashids">hashids/hashids</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>工具</tag>
-        <tag>Composer</tag>
       </tags>
   </entry>
   <entry>
