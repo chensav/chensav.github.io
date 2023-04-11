@@ -4,6 +4,164 @@
   
   
   <entry>
+    <title>CentOS7搭建SOCKS5代理服务器</title>
+    <link href="/p/fb0b7d19/"/>
+    <url>/p/fb0b7d19/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 安装依赖扩展</span><br>yum install -y gcc openldap-devel pam-devel openssl-devel<br><span class="hljs-comment"># 下载ss5包</span><br>wget http://jaist.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz<br>tar -vzx -f ss5-3.8.9-8.tar.gz<br><span class="hljs-built_in">cd</span> ss5-3.8.9/<br>./configure<br>make<br>make install<br><span class="hljs-built_in">chmod</span> a+x /etc/init.d/ss5<br></code></pre></td></tr></table></figure><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="编辑配置文件"><a href="#编辑配置文件" class="headerlink" title="编辑配置文件"></a>编辑配置文件</h4><p>vim /etc/opt/ss5/ss5.conf<br>找到对应行将“#”删除，同时在“auth”一行末尾Authentication列将“-”修改为“u”，“permit”一行中的Auth列修改“-”为“u”。修改完毕后保存。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Bash">auth    0.0.0.0/0               -               u<br>permit u0.0.0.0/0-0.0.0.0/0-----<br></code></pre></td></tr></table></figure><h3 id="设置用户名和密码"><a href="#设置用户名和密码" class="headerlink" title="设置用户名和密码"></a>设置用户名和密码</h3><p>vim /etc/opt/ss5/ss5.passwd<br>添加用户名和密码，格式为：用户名 密码,保存退出。</p><h3 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h3><p>service ss5 restart</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Centos</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Centos7</tag>
+      
+      <tag>代理</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Centos7同步时间</title>
+    <link href="/p/3b76e851/"/>
+    <url>/p/3b76e851/</url>
+    
+    <content type="html"><![CDATA[<h4 id="使用ntpdate同步时间"><a href="#使用ntpdate同步时间" class="headerlink" title="使用ntpdate同步时间"></a>使用ntpdate同步时间</h4><p>目前比较常用的做法就是使用ntpdate命令来同步时间，使用方法如下：<br>另外再分享下几个常用的ntp server，如果需要更多可以前往：<a href="http://www.ntp.org.cn获取/">http://www.ntp.org.cn获取</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment">#安装ntpdate</span><br>yum -y install ntpdate<br><span class="hljs-comment">#同步时间</span><br>ntpdate -u  pool.ntp.org<br><span class="hljs-comment">#同步完成后,date命令查看时间是否正确</span><br><span class="hljs-built_in">date</span><br></code></pre></td></tr></table></figure><h4 id="使用rdate同步时间"><a href="#使用rdate同步时间" class="headerlink" title="使用rdate同步时间"></a>使用rdate同步时间</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment">#安装rdate</span><br>yum -y install rdate<br><span class="hljs-comment">#同步时间</span><br>rdate -s time-b.nist.gov<br><span class="hljs-comment">#同步完成后,date命令查看时间是否正确</span><br><span class="hljs-built_in">date</span><br></code></pre></td></tr></table></figure><h4 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment">#创建crontab任务</span><br>crontab -e<br><br><span class="hljs-comment">#添加定时任务</span><br>*/20 * * * * /usr/sbin/ntpdate pool.ntp.org &gt; /dev/null 2&gt;&amp;1<br>*/20 * * * * /usr/sbin/rdate -s time-b.nist.gov &gt; /dev/null 2&gt;&amp;1<br><br><span class="hljs-comment">#重启crontab</span><br>service crond reload<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Centos</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Centos</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Python下requests库使用socks5代理</title>
+    <link href="/p/3b76e853/"/>
+    <url>/p/3b76e853/</url>
+    
+    <content type="html"><![CDATA[<h3 id="使用socks5代理"><a href="#使用socks5代理" class="headerlink" title="使用socks5代理"></a>使用socks5代理</h3><ol><li>安装依赖<br>pip install requests requests[socks]</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs Bash">```Python<br>import requests<br> session = requests.session()<br>                session.proxies = &#123;<span class="hljs-string">&#x27;https&#x27;</span>: f<span class="hljs-string">&#x27;socks5://&#123;ip&#125;:&#123;port&#125;&#x27;</span>&#125;<br>                response = session.get(<span class="hljs-string">&#x27;https://httpbin.org/ip&#x27;</span>, <span class="hljs-built_in">timeout</span>=30).json()<br>                logger.info(f<span class="hljs-string">&quot;获取到代理 &#123;response&#125;&quot;</span>)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>requests</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Python安包报错ERROR:Could not find+a+version……解决方法</title>
+    <link href="/p/cb58a7d0/"/>
+    <url>/p/cb58a7d0/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ERROR: Could not find a version that satisfies the requirement tensorflow==2.0.0 (from versions: none)<br></code></pre></td></tr></table></figure><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 不止要选择pip源，还要信任它的来源，只完成第一步是不可以的喽</span><br>pip install fonttools -i http://pypi.douban.com/simple/ --trusted-host<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>命令行下windows防火墙操作</title>
+    <link href="/p/a60073f6/"/>
+    <url>/p/a60073f6/</url>
+    
+    <content type="html"><![CDATA[<h4 id="设置防火墙服务为自动"><a href="#设置防火墙服务为自动" class="headerlink" title="设置防火墙服务为自动"></a>设置防火墙服务为自动</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">sc config sharedaccess <span class="hljs-built_in">start</span>=auto<br></code></pre></td></tr></table></figure><h4 id="开启防火墙服务"><a href="#开启防火墙服务" class="headerlink" title="开启防火墙服务"></a>开启防火墙服务</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd"><span class="hljs-built_in">net</span> <span class="hljs-built_in">start</span> sharedaccess<br></code></pre></td></tr></table></figure><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">netsh advfirewall firewall add rule name=&quot;mysql&quot; <span class="hljs-built_in">dir</span>=<span class="hljs-keyword">in</span> protocol=tcp localport=<span class="hljs-number">3306</span> action=allow<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>window</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>防火墙</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Celery5.2.7版本配置详解</title>
+    <link href="/p/4ff9djj23a/"/>
+    <url>/p/4ff9djj23a/</url>
+    
+    <content type="html"><![CDATA[<h4 id="常规配置"><a href="#常规配置" class="headerlink" title="常规配置"></a>常规配置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 获取任务队列</span><br>broker_url=<br><br><span class="hljs-comment"># 保存任务队列</span><br>result_backend=<br><br><span class="hljs-comment"># 接受内容格式</span><br>accept_content = [<span class="hljs-string">&#x27;json&#x27;</span>]<br><br><span class="hljs-comment"># 保存数据格式化方式</span><br>result_accept_content = [<span class="hljs-string">&#x27;json&#x27;</span>] <br><br><span class="hljs-comment"># 执行速率限制</span><br>task_annotations= &#123;<span class="hljs-string">&#x27;*&#x27;</span>: &#123;<span class="hljs-string">&#x27;rate_limit&#x27;</span>: <span class="hljs-string">&#x27;10/s&#x27;</span>&#125;&#125;<br><br><span class="hljs-comment"># 任务过期时间</span><br>result_expires = <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span><br><br><span class="hljs-comment"># 程序的并发数，默认是服务器的内核数目,也是命令行-c参数指定的数目</span><br>worker_concurrency = <span class="hljs-number">20</span><br><br><span class="hljs-comment"># 设置时区</span><br>timezone = <span class="hljs-string">&#x27;Asia/Shanghai&#x27;</span><br><br><span class="hljs-comment"># 启动时区设置</span><br>enable_utc = <span class="hljs-literal">True</span><br><br><span class="hljs-comment"># 任务路由</span><br>task_routes = &#123;<br>    <span class="hljs-string">&#x27;app.task.keyword_rank&#x27;</span>: &#123;<br>        <span class="hljs-string">&#x27;queue&#x27;</span>: <span class="hljs-string">&#x27;keyword_rank&#x27;</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h4 id="配置参考"><a href="#配置参考" class="headerlink" title="配置参考"></a>配置参考</h4><p><a href="https://docs.celeryq.dev/en/stable/userguide/configuration.html#general-settings">celery手册</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Celery</tag>
+      
+      <tag>工具</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Homestead环境安装swoole问题</title>
     <link href="/p/6ab1d14d/"/>
     <url>/p/6ab1d14d/</url>
@@ -180,9 +338,9 @@
     
     <tags>
       
-      <tag>随笔</tag>
-      
       <tag>笔记</tag>
+      
+      <tag>随笔</tag>
       
     </tags>
     
@@ -262,6 +420,102 @@
     <tags>
       
       <tag>工具</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>PM2命令使用方法总结</title>
+    <link href="/p/e4be183c/"/>
+    <url>/p/e4be183c/</url>
+    
+    <content type="html"><![CDATA[<h2 id="pm2是什么？"><a href="#pm2是什么？" class="headerlink" title="pm2是什么？"></a>pm2是什么？</h2><p>PM2是 node 进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，这里推荐一个 node 版本控制工具–<strong>nvm</strong>。</p><h2 id="为什么要用pm2"><a href="#为什么要用pm2" class="headerlink" title="为什么要用pm2?"></a>为什么要用pm2?</h2><p>对于线上项目，如果直接通过 <code>node app</code> 来启动，因为 node 是单线程的，所以<strong>如果报错了可能会使项目直接停止，从而导致整个服务崩溃。</strong></p><blockquote><p>一般监控 node 有几种方案：</p><ol><li> supervisor: 一般用作开发环境的使用；</li><li> forever: 管理多个站点，一般每个站点的访问量不大的情况，不需要监控；</li><li> PM2: 网站的访问量比较大，需要完整的监控页面。</li></ol></blockquote><h2 id="pm2优点"><a href="#pm2优点" class="headerlink" title="pm2优点"></a>pm2优点</h2><ul><li>  后台运行(关掉cmd窗口依然运行)</li><li>  0 秒停机重载，维护升级时不需要停机</li><li>  Linux (stable) &amp; MacOSx (stable) &amp; Windows (stable).多平台支持</li><li>  进程守护 (停止不稳定的进程，避免无限循环)</li><li>  内建负载均衡</li><li>  实时控制台检测</li><li>  提供 HTTP API等</li><li>  远程控制和实时的接口API ( nodejs 模块,允许和PM2进程管理器交互 )</li><li>  不仅仅可以启动node程序，对于一般的脚本程序同样可以</li></ul><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote><p>确保有node环境</p></blockquote><p><code>npm install -g pm2</code></p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p><code>pm2 start app.js</code> （如果提示找不到命令且你已安装成功，则可能你没有配置环境变量，需要自己手动配一下）</p><p><strong>参数说明：</strong></p><ul><li>  <code>--watch</code>：监听应用目录的变化，一旦发生变化，自动重启。如果要精确监听、不见听的目录，最好通过配置文件。</li><li>  <code>-i --instances</code>：启用多少个实例，可用于负载均衡。如果<code>-i 0</code>或者<code>-i max</code>，则根据当前机器核数确定实例数目。</li><li>  <code>--ignore-watch</code>：排除监听的目录/文件，可以是特定的文件名，也可以是正则。比如<code>--ignore-watch=&quot;test node_modules &quot;</code></li><li>  <code>-n --name</code>：指定应用的名称。查看应用信息的时候可以用到。</li><li>  <code>-o --output &lt;path&gt;</code>：标准输出日志文件的路径。</li><li>  <code>-e --error &lt;path&gt;</code>：错误输出日志文件的路径。</li><li>  <code>--interpreter &lt;interpreter&gt;</code>：the interpreter pm2 should use for executing app (bash, python…)。比如你用的coffee script来编写应用。</li><li>  <code>-x</code>：用fork模式启动app.js，而不是cluster模式</li></ul><blockquote><ul><li>fork模式：单实例多进程，常用于多语言混编，比如php、python等，不支持端口复用，需要自己做应用的端口分配和负载均衡的子进程业务代码。<ul><li>  缺点：就是单服务器实例容易由于异常会导致服务器实例崩溃。</li></ul></li><li>cluster模式：多实例多进程，但是只支持node，端口可以复用，不需要额外的端口配置，0代码实现负载均衡。<ul><li>  优点：就是由于多实例机制，可以保证服务器的容错性，就算出现异常也不会使多个服务器实例同时崩溃。</li></ul></li></ul></blockquote><blockquote><p>例子：</p><ul><li>  <code>pm2 start app.js --watch</code>：实时监控的方式启动，app.js文件有变动时，pm2会自动reload(重启)</li><li>  <code>pm2 start app.js -i max</code>：根据有效CPU数目启动最大进程数目</li><li>  <code>pm2 start app.js -i 3</code>：启动3个进程</li><li>  <code>pm2 start app.js --ignore-watch=&quot;test node_modules&quot;</code>:排除监听的目录/文件</li><li>  <code>pm2 start app.js --name mynode</code>：启动一个进程并把它命名为mynode</li><li>  <code>pm2 start app.json</code>：启动进程, 可以在 app.json里设置选项</li><li>  <code>pm2 start app.js -i max - -z 10</code>：在 – 之后给 app.js 传递参数（-z 10）</li></ul></blockquote><h3 id="查看与监视进程"><a href="#查看与监视进程" class="headerlink" title="查看与监视进程"></a>查看与监视进程</h3><ul><li>  <code>pm2 list</code>：显示所有进程信息；</li><li>  <code>pm2 show 11</code>，<code>pm2 info 11</code>：查看进程id为 11 的详细信息；</li><li>  <code>pm2 monit</code>：进入监视页面，监视每个node进程的CPU和内存的使用情况。</li></ul><h3 id="重载、重启"><a href="#重载、重启" class="headerlink" title="重载、重启"></a>重载、重启</h3><ul><li>  <code>pm2 restart 11</code>：重启id为 11 的进程；</li><li>  <code>pm2 restart all</code>：重启所有进程；</li><li>  <code>pm2 reload 11</code>：0秒停机重载id为 11 进程（用于 NETWORKED 进程）；</li><li>  <code>pm2 reload all</code>：重载所有进程；</li></ul><h3 id="停止、删除进程"><a href="#停止、删除进程" class="headerlink" title="停止、删除进程"></a>停止、删除进程</h3><ul><li>  <code>pm2 stop/delete 11</code>：停止/删除id为 11 的进程；</li><li>  <code>pm2 stop/delete all</code>：停止/删除所有进程；</li></ul><h3 id="日志操作"><a href="#日志操作" class="headerlink" title="日志操作"></a>日志操作</h3><ul><li>  <code>pm2 logs</code>：显示所有进程的日志；</li><li>  <code>pm2 logs 11</code>：显示进程id为 11 的日志；</li><li>  <code>pm2 flush</code>：清空所有日志文件；</li><li>  <code>pm2 reloadLogs</code>：重载所有日志；</li><li>  <code>pm2 startup</code>：产生 init 脚本，保持进程活着；</li></ul><h3 id="杀进程"><a href="#杀进程" class="headerlink" title="杀进程"></a>杀进程</h3><ul><li>  <code>pm2 kill</code>：杀死pm2进程 ;</li></ul><h3 id="开机自动启动"><a href="#开机自动启动" class="headerlink" title="开机自动启动"></a>开机自动启动</h3><p>1、通过<code>pm2 save</code>保存当前进程状态。<br>2、通过<code>pm2 startup [platform]</code>生成开机自启动的命令。例如：<code>pm2 startup centeros</code><br>3、将步骤2生成的命令，粘贴到控制台进行，搞定。</p><h2 id="pm2配置文件启动"><a href="#pm2配置文件启动" class="headerlink" title="pm2配置文件启动"></a>pm2配置文件启动</h2><p>在上面的启动命令例子中，有一条<code>pm2 start app.json</code>命令，可以在app.json文件中添加配置</p><p>apps:json结构，apps是一个数组，数组中的每一个对象就对应一个pm2中运行的应用</p><p><strong>参数说明：</strong></p><ul><li>  name:应用程序名称</li><li>  args:脚本的参数域</li><li>  cwd:应用程序所在的目录</li><li>  script:应用程序的脚本路径</li><li>  log_date_format:</li><li>  node_args:node 的参数域</li><li>  error_file:自定义应用程序的错误日志文件</li><li>  out_file:自定义应用程序日志文件</li><li>  pid_file:自定义应用程序的pid文件</li><li>  instances:</li><li>  min_uptime:最小运行时间，这里设置的是60s即如果应用程序在60s内退出，pm2会认为程序异常退出，此时触发重启max_restarts设置数量</li><li>  max_restarts:设置应用程序异常退出重启的次数，默认15次（从0开始计数）</li><li>  cron_restart:定时启动，解决重启能解决的问题</li><li>  watch:是否启用监控模式，默认是false。如果设置成true，当应用程序变动时， pm2会自动重载。这里也可以设置你要监控的文件。</li><li>  merge_logs:</li><li>  exec_interpreter:应用程序的脚本类型，这里使用的shell，默认是nodejs</li><li>  exec_mode:应用程序启动模式，这里设置的是cluster_mode（集群），默认是fork</li><li>  autorestart:启用/禁用应用程序崩溃或退出时自动重启</li><li>  vizion:启用/禁用vizion特性(版本控制)</li></ul><p>举个例子：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;apps&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;serverName&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 名称</span><br>      <span class="hljs-attr">&quot;script&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./index.js&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 入口文件</span><br>      <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-comment">// 环境</span><br>        <span class="hljs-attr">&quot;NODE_ENV&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;development&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;env_production&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;NODE_ENV&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;production&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;instances&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 启用多少个实例</span><br>      <span class="hljs-attr">&quot;exec_mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cluster&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 应用程序启动模式，这里设置的是cluster_mode（集群），默认是fork</span><br>      <span class="hljs-attr">&quot;max_restarts&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 设置应用程序异常退出重启的次数，默认15次（从0开始计数）</span><br>      <span class="hljs-attr">&quot;restart_delay&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-number">5000</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 异常重启情况下，延时重启时间</span><br>      <span class="hljs-attr">&quot;log_date_format&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;YYYY-MM-DD HH:mm Z&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;combine_logs&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;log_file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;yourpath&gt;/combined.outerr.log&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 日志目录</span><br>      <span class="hljs-attr">&quot;out_file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;yourpath&gt;/out.log&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;error_file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;yourpath&gt;/err.log&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure><blockquote><p>注：<code>pm2 restart</code>命令不会重新进行 配置文件 需要关掉重启。</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>NodeJs</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>PM2</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hexo常用命令详解</title>
+    <link href="/p/fe29ef0f/"/>
+    <url>/p/fe29ef0f/</url>
+    
+    <content type="html"><![CDATA[<h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo init [folder]<br></code></pre></td></tr></table></figure><p>新建一个网站。如果没有设置 folder ，Hexo 默认在目前的文件夹建立网站。</p><h3 id="new"><a href="#new" class="headerlink" title="new"></a>new</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo new [layout] &lt;title&gt;<br></code></pre></td></tr></table></figure><p>新建时 layout Post layout. Use post, page, draft or whatever you want.<br>post 表示发布，page 单独一个页面 ，draft草稿</p><table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>-p, –path</td><td>自定义新文章的路径</td></tr><tr><td>-r, –replace</td><td>如果存在同名文章，将其替换</td></tr><tr><td>-s, –slug</td><td>文章的 Slug，作为新文章的文件名和发布后的 URL</td></tr></tbody></table><p>比如在用 -p 时<code>hexo new page --path about/me &quot;About me&quot;</code></p><p>以上命令会创建一个 source/about/me.md 文件，同时 Front Matter 中的 title 为 “About me”</p><h3 id="generate"><a href="#generate" class="headerlink" title="generate"></a>generate</h3><p>可以简写为 hexo g</p><table><thead><tr><th>选项</th><th>描述</th></tr></thead><tbody><tr><td>-d, –deploy</td><td>文件生成后立即部署网站</td></tr><tr><td>-w, –watch</td><td>监视文件变动</td></tr><tr><td>-b, –bail</td><td>生成过程中如果发生任何未处理的异常则抛出异常</td></tr><tr><td>-f, –force</td><td>强制重新生成文件</td></tr><tr><td>-c, –concurrency</td><td>最大同时生成文件的数量，默认无限制</td></tr></tbody></table><h3 id="publish"><a href="#publish" class="headerlink" title="publish"></a>publish</h3><p>用于发布草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo publish [layout] &lt;filename&gt;<br></code></pre></td></tr></table></figure><h3 id="server"><a href="#server" class="headerlink" title="server"></a>server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo server<br></code></pre></td></tr></table></figure><table><thead><tr><th>选项</th><th>描述</th></tr></thead><tbody><tr><td>-p, –port</td><td>重设端口</td></tr><tr><td>-s, –static</td><td>只使用静态文件</td></tr><tr><td>-l, –log</td><td>启动日记记录，使用覆盖记录格式</td></tr></tbody></table><h3 id="deploy"><a href="#deploy" class="headerlink" title="deploy"></a>deploy</h3><p>部署站点</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo hexo deploy<br></code></pre></td></tr></table></figure><table><thead><tr><th>参数</th><th>描述</th></tr></thead><tbody><tr><td>-g, –generate</td><td>部署之前预先生成静态文件</td></tr></tbody></table><p>该命令可以简写为</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo d<br></code></pre></td></tr></table></figure><h3 id="clean"><a href="#clean" class="headerlink" title="clean"></a>clean</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo clean <br></code></pre></td></tr></table></figure><blockquote><p>清除缓存文件 (db.json) 和已生成的静态文件 (public)。<br>在某些情况（尤其是更换主题后），如果发现您对站点的更改无论如何也不生效，您可能需要运行该命令。</p></blockquote><h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><p>列出网站资料</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">hexo list<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NodeJs服务后台持续运行三种方法</title>
+    <link href="/p/3b76e85d/"/>
+    <url>/p/3b76e85d/</url>
+    
+    <content type="html"><![CDATA[<h3 id="使用forever"><a href="#使用forever" class="headerlink" title="使用forever"></a>使用<strong>forever</strong></h3><ol><li>安装 forever</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">npm install forever -g<br></code></pre></td></tr></table></figure><ol start="2"><li>启动服务</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">service forever start<br></code></pre></td></tr></table></figure><ol start="3"><li>使用 forever 启动 js 文件</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">forever stop index.js<br></code></pre></td></tr></table></figure><ol start="4"><li>启动js文件并输出日志文件</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">forever start -l forever.log -o out.log -e err.log index.js<br></code></pre></td></tr></table></figure><ol start="5"><li>重启js文件</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">forever restart index.js<br></code></pre></td></tr></table></figure><ol start="6"><li>查看正在运行的进程</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">forever list<br></code></pre></td></tr></table></figure><h3 id="pm2是一个进程管理工具-可以用它来管理你的node进程-并查看node进程的状态-当然也支持性能监控-进程守护-负载均衡等功能"><a href="#pm2是一个进程管理工具-可以用它来管理你的node进程-并查看node进程的状态-当然也支持性能监控-进程守护-负载均衡等功能" class="headerlink" title="pm2是一个进程管理工具,可以用它来管理你的node进程,并查看node进程的状态,当然也支持性能监控,进程守护,负载均衡等功能"></a>pm2是一个进程管理工具,可以用它来管理你的node进程,并查看node进程的状态,当然也支持性能监控,进程守护,负载均衡等功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Bash">npm install -g pm2<br>pm2 start app.js        // 启动<br>pm2 start app.js -i max //启动 使用所有CPU核心的集群<br>pm2 stop app.js         // 停止<br>pm2 stop all            // 停止所有<br>pm2 restart app.js      // 重启<br>pm2 restart all         // 重启所有<br>pm2 delete app.js      // 关闭<br></code></pre></td></tr></table></figure><h3 id="nodejs-自带node-js自带服务nohub，不需要安装别的包。"><a href="#nodejs-自带node-js自带服务nohub，不需要安装别的包。" class="headerlink" title="nodejs 自带node.js自带服务nohub，不需要安装别的包。"></a>nodejs 自带node.js自带服务nohub，不需要安装别的包。</h3><p>缺点：存在无法查询日志等问题,关闭终端后服务也就关闭了， 经测试是这样的。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">nohup</span> node ***.js &amp;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>NodeJs</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>NodeJs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Centos安装supervisor</title>
+    <link href="/p/7e7b6c02/"/>
+    <url>/p/7e7b6c02/</url>
+    
+    <content type="html"><![CDATA[<h4 id="安装-supervisor"><a href="#安装-supervisor" class="headerlink" title="安装 supervisor"></a>安装 supervisor</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">yum install -y supervisor <br></code></pre></td></tr></table></figure><h4 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">systemctl <span class="hljs-built_in">enable</span> supervisord<br></code></pre></td></tr></table></figure><h4 id="启动-supervisor"><a href="#启动-supervisor" class="headerlink" title="启动 supervisor"></a>启动 supervisor</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ps<br></code></pre></td></tr></table></figure><h4 id="查看状态"><a href="#查看状态" class="headerlink" title="查看状态"></a>查看状态</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">systemctl status supervisord<br></code></pre></td></tr></table></figure><h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">vim /etc/supervisord.conf<br></code></pre></td></tr></table></figure><h4 id="开启web界面访问-把-inet-http-server-模块的注释去掉，并修改IP、用户名与密码"><a href="#开启web界面访问-把-inet-http-server-模块的注释去掉，并修改IP、用户名与密码" class="headerlink" title="#开启web界面访问 把[inet_http_server]模块的注释去掉，并修改IP、用户名与密码"></a>#开启web界面访问 把[inet_http_server]模块的注释去掉，并修改IP、用户名与密码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs Bash">[inet_http_server]         ; inet (TCP) server disabled by default<br>port=10.64.56.159:9001        ; (ip_address:port specifier, *:port <span class="hljs-keyword">for</span> all iface)<br>username=***              ; (default is no username (open server))<br>password=***               ; (default is no password (open server)) <br></code></pre></td></tr></table></figure><h4 id="重新加载配置文件"><a href="#重新加载配置文件" class="headerlink" title="重新加载配置文件"></a>重新加载配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">~~supervisorctl reload~~<br></code></pre></td></tr></table></figure><h4 id="php-laravel-配置-Supervisor示例-修改-etc-supervisord-conf-文件内容"><a href="#php-laravel-配置-Supervisor示例-修改-etc-supervisord-conf-文件内容" class="headerlink" title="php laravel 配置 Supervisor示例 #修改 /etc/supervisord.conf 文件内容"></a>php laravel 配置 Supervisor示例 #修改 /etc/supervisord.conf 文件内容</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Bash">; files = supervisord.d/*.ini<br>files = /etc/supervisord.d/conf.d/*.conf<br><br></code></pre></td></tr></table></figure><h4 id="在-etc-supervisord-d-下创建文件test-conf，内容如下："><a href="#在-etc-supervisord-d-下创建文件test-conf，内容如下：" class="headerlink" title="在 /etc/supervisord.d/下创建文件test.conf，内容如下："></a>在 /etc/supervisord.d/下创建文件test.conf，内容如下：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Bash">[program:sync_goods_to_es]<br>process_name=%(program_name)s_%(process_num)02d<br><span class="hljs-built_in">command</span>=php artisan command.sync.goods.to.es  ;被监控的进程路径<br>priority=999 ;优先级，数值越低越先启动而越后关闭 (default 999)<br>autostart=<span class="hljs-literal">true</span> ;随着supervisord的启动而启动<br>autorestart=<span class="hljs-literal">true</span> ;自动重启<br>user=root ;用哪个用户启动进程，默认是root<br>numprocs=1 ;启动几个进程<br>redirect_stderr=<span class="hljs-literal">true</span> ;重定向stderr到stdout<br>stdout_logfile=/data0/log-data/service.log;<br><br></code></pre></td></tr></table></figure><p><strong>stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</strong></p><h4 id="执行命令使配置文件生效"><a href="#执行命令使配置文件生效" class="headerlink" title="执行命令使配置文件生效"></a>执行命令使配置文件生效</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 重新更新配置</span><br>supervisorctl reload<br>supervisorctl update <br></code></pre></td></tr></table></figure><h4 id="如果修改了-etc-supervisord-conf，重启-supervisord"><a href="#如果修改了-etc-supervisord-conf，重启-supervisord" class="headerlink" title="如果修改了 /etc/supervisord.conf，重启 supervisord"></a>如果修改了 /etc/supervisord.conf，重启 supervisord</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">systemctl restart supervisord<br></code></pre></td></tr></table></figure><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Bash">systemctl start supervisord <span class="hljs-comment">#启动</span><br><br>systemctl stop supervisord <span class="hljs-comment">#停止</span><br><br>systemctl status supervisord <span class="hljs-comment">#查看状态</span><br><br>supervisorctl reread  <span class="hljs-comment"># 重新加载</span><br><br>supervisorctl update<br><br>supervisorctl reload<br><br>supervisorctl shutdown <span class="hljs-comment">#关闭所有任务</span><br><br>supervisorctl stop|start program_name <span class="hljs-comment">#启动或停止服务</span><br><br>supervisorctl status <span class="hljs-comment">#查看所有任务状态 </span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Centos</tag>
+      
+      <tag>安装</tag>
       
     </tags>
     

@@ -1,0 +1,831 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="1231231">
+  
+    <meta name="description" content="pm2是什么？PM2是 node 进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，这里推荐一个 node 版本控制工具–nvm。 为什么要用pm2?对于线上项目，如果直接通过 node app 来启动，因为 node 是单线程的，所以如果报错了可能会使项目直接停止，从而导致整个服务崩溃。  一般监控 node 有几种方案：   supervisor: 一般用作开发环境的使用；  fo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PM2命令使用方法总结">
+<meta property="og:url" content="http://example.com/p/e4be183c/index.html">
+<meta property="og:site_name" content="锤🔨头并进">
+<meta property="og:description" content="pm2是什么？PM2是 node 进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，这里推荐一个 node 版本控制工具–nvm。 为什么要用pm2?对于线上项目，如果直接通过 node app 来启动，因为 node 是单线程的，所以如果报错了可能会使项目直接停止，从而导致整个服务崩溃。  一般监控 node 有几种方案：   supervisor: 一般用作开发环境的使用；  fo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://image.chensav.top/blog/e4be183c.jpg">
+<meta property="article:published_time" content="2022-04-08T06:18:36.000Z">
+<meta property="article:modified_time" content="2023-04-11T05:44:16.137Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="PM2">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://image.chensav.top/blog/e4be183c.jpg">
+  
+  
+  
+  <title>PM2命令使用方法总结 - 锤🔨头并进</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"2fcd990263402ceea42af6e925f6bf23","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?2fcd990263402ceea42af6e925f6bf23";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>锤🔨头并进</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" false
+     style="background: url('https://image.chensav.top/blog/e4be183c.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PM2命令使用方法总结"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-08 14:18" pubdate>
+          2022年4月8日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PM2命令使用方法总结</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：16 分钟前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="pm2是什么？"><a href="#pm2是什么？" class="headerlink" title="pm2是什么？"></a>pm2是什么？</h2><p>PM2是 node 进程管理工具，可以利用它来简化很多node应用管理的繁琐任务，这里推荐一个 node 版本控制工具–<strong>nvm</strong>。</p>
+<h2 id="为什么要用pm2"><a href="#为什么要用pm2" class="headerlink" title="为什么要用pm2?"></a>为什么要用pm2?</h2><p>对于线上项目，如果直接通过 <code>node app</code> 来启动，因为 node 是单线程的，所以<strong>如果报错了可能会使项目直接停止，从而导致整个服务崩溃。</strong></p>
+<blockquote>
+<p>一般监控 node 有几种方案：</p>
+<ol>
+<li> supervisor: 一般用作开发环境的使用；</li>
+<li> forever: 管理多个站点，一般每个站点的访问量不大的情况，不需要监控；</li>
+<li> PM2: 网站的访问量比较大，需要完整的监控页面。</li>
+</ol>
+</blockquote>
+<h2 id="pm2优点"><a href="#pm2优点" class="headerlink" title="pm2优点"></a>pm2优点</h2><ul>
+<li>  后台运行(关掉cmd窗口依然运行)</li>
+<li>  0 秒停机重载，维护升级时不需要停机</li>
+<li>  Linux (stable) &amp; MacOSx (stable) &amp; Windows (stable).多平台支持</li>
+<li>  进程守护 (停止不稳定的进程，避免无限循环)</li>
+<li>  内建负载均衡</li>
+<li>  实时控制台检测</li>
+<li>  提供 HTTP API等</li>
+<li>  远程控制和实时的接口API ( nodejs 模块,允许和PM2进程管理器交互 )</li>
+<li>  不仅仅可以启动node程序，对于一般的脚本程序同样可以</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>确保有node环境</p>
+</blockquote>
+<p><code>npm install -g pm2</code></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p><code>pm2 start app.js</code> （如果提示找不到命令且你已安装成功，则可能你没有配置环境变量，需要自己手动配一下）</p>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li>  <code>--watch</code>：监听应用目录的变化，一旦发生变化，自动重启。如果要精确监听、不见听的目录，最好通过配置文件。</li>
+<li>  <code>-i --instances</code>：启用多少个实例，可用于负载均衡。如果<code>-i 0</code>或者<code>-i max</code>，则根据当前机器核数确定实例数目。</li>
+<li>  <code>--ignore-watch</code>：排除监听的目录/文件，可以是特定的文件名，也可以是正则。比如<code>--ignore-watch=&quot;test node_modules &quot;</code></li>
+<li>  <code>-n --name</code>：指定应用的名称。查看应用信息的时候可以用到。</li>
+<li>  <code>-o --output &lt;path&gt;</code>：标准输出日志文件的路径。</li>
+<li>  <code>-e --error &lt;path&gt;</code>：错误输出日志文件的路径。</li>
+<li>  <code>--interpreter &lt;interpreter&gt;</code>：the interpreter pm2 should use for executing app (bash, python…)。比如你用的coffee script来编写应用。</li>
+<li>  <code>-x</code>：用fork模式启动app.js，而不是cluster模式</li>
+</ul>
+<blockquote>
+<ul>
+<li>fork模式：单实例多进程，常用于多语言混编，比如php、python等，不支持端口复用，需要自己做应用的端口分配和负载均衡的子进程业务代码。<ul>
+<li>  缺点：就是单服务器实例容易由于异常会导致服务器实例崩溃。</li>
+</ul>
+</li>
+<li>cluster模式：多实例多进程，但是只支持node，端口可以复用，不需要额外的端口配置，0代码实现负载均衡。<ul>
+<li>  优点：就是由于多实例机制，可以保证服务器的容错性，就算出现异常也不会使多个服务器实例同时崩溃。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>例子：</p>
+<ul>
+<li>  <code>pm2 start app.js --watch</code>：实时监控的方式启动，app.js文件有变动时，pm2会自动reload(重启)</li>
+<li>  <code>pm2 start app.js -i max</code>：根据有效CPU数目启动最大进程数目</li>
+<li>  <code>pm2 start app.js -i 3</code>：启动3个进程</li>
+<li>  <code>pm2 start app.js --ignore-watch=&quot;test node_modules&quot;</code>:排除监听的目录/文件</li>
+<li>  <code>pm2 start app.js --name mynode</code>：启动一个进程并把它命名为mynode</li>
+<li>  <code>pm2 start app.json</code>：启动进程, 可以在 app.json里设置选项</li>
+<li>  <code>pm2 start app.js -i max - -z 10</code>：在 – 之后给 app.js 传递参数（-z 10）</li>
+</ul>
+</blockquote>
+<h3 id="查看与监视进程"><a href="#查看与监视进程" class="headerlink" title="查看与监视进程"></a>查看与监视进程</h3><ul>
+<li>  <code>pm2 list</code>：显示所有进程信息；</li>
+<li>  <code>pm2 show 11</code>，<code>pm2 info 11</code>：查看进程id为 11 的详细信息；</li>
+<li>  <code>pm2 monit</code>：进入监视页面，监视每个node进程的CPU和内存的使用情况。</li>
+</ul>
+<h3 id="重载、重启"><a href="#重载、重启" class="headerlink" title="重载、重启"></a>重载、重启</h3><ul>
+<li>  <code>pm2 restart 11</code>：重启id为 11 的进程；</li>
+<li>  <code>pm2 restart all</code>：重启所有进程；</li>
+<li>  <code>pm2 reload 11</code>：0秒停机重载id为 11 进程（用于 NETWORKED 进程）；</li>
+<li>  <code>pm2 reload all</code>：重载所有进程；</li>
+</ul>
+<h3 id="停止、删除进程"><a href="#停止、删除进程" class="headerlink" title="停止、删除进程"></a>停止、删除进程</h3><ul>
+<li>  <code>pm2 stop/delete 11</code>：停止/删除id为 11 的进程；</li>
+<li>  <code>pm2 stop/delete all</code>：停止/删除所有进程；</li>
+</ul>
+<h3 id="日志操作"><a href="#日志操作" class="headerlink" title="日志操作"></a>日志操作</h3><ul>
+<li>  <code>pm2 logs</code>：显示所有进程的日志；</li>
+<li>  <code>pm2 logs 11</code>：显示进程id为 11 的日志；</li>
+<li>  <code>pm2 flush</code>：清空所有日志文件；</li>
+<li>  <code>pm2 reloadLogs</code>：重载所有日志；</li>
+<li>  <code>pm2 startup</code>：产生 init 脚本，保持进程活着；</li>
+</ul>
+<h3 id="杀进程"><a href="#杀进程" class="headerlink" title="杀进程"></a>杀进程</h3><ul>
+<li>  <code>pm2 kill</code>：杀死pm2进程 ;</li>
+</ul>
+<h3 id="开机自动启动"><a href="#开机自动启动" class="headerlink" title="开机自动启动"></a>开机自动启动</h3><p>1、通过<code>pm2 save</code>保存当前进程状态。<br>2、通过<code>pm2 startup [platform]</code>生成开机自启动的命令。例如：<code>pm2 startup centeros</code><br>3、将步骤2生成的命令，粘贴到控制台进行，搞定。</p>
+<h2 id="pm2配置文件启动"><a href="#pm2配置文件启动" class="headerlink" title="pm2配置文件启动"></a>pm2配置文件启动</h2><p>在上面的启动命令例子中，有一条<code>pm2 start app.json</code>命令，可以在app.json文件中添加配置</p>
+<p>apps:json结构，apps是一个数组，数组中的每一个对象就对应一个pm2中运行的应用</p>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li>  name:应用程序名称</li>
+<li>  args:脚本的参数域</li>
+<li>  cwd:应用程序所在的目录</li>
+<li>  script:应用程序的脚本路径</li>
+<li>  log_date_format:</li>
+<li>  node_args:node 的参数域</li>
+<li>  error_file:自定义应用程序的错误日志文件</li>
+<li>  out_file:自定义应用程序日志文件</li>
+<li>  pid_file:自定义应用程序的pid文件</li>
+<li>  instances:</li>
+<li>  min_uptime:最小运行时间，这里设置的是60s即如果应用程序在60s内退出，pm2会认为程序异常退出，此时触发重启max_restarts设置数量</li>
+<li>  max_restarts:设置应用程序异常退出重启的次数，默认15次（从0开始计数）</li>
+<li>  cron_restart:定时启动，解决重启能解决的问题</li>
+<li>  watch:是否启用监控模式，默认是false。如果设置成true，当应用程序变动时， pm2会自动重载。这里也可以设置你要监控的文件。</li>
+<li>  merge_logs:</li>
+<li>  exec_interpreter:应用程序的脚本类型，这里使用的shell，默认是nodejs</li>
+<li>  exec_mode:应用程序启动模式，这里设置的是cluster_mode（集群），默认是fork</li>
+<li>  autorestart:启用/禁用应用程序崩溃或退出时自动重启</li>
+<li>  vizion:启用/禁用vizion特性(版本控制)</li>
+</ul>
+<p>举个例子：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;apps&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;serverName&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 名称</span><br>      <span class="hljs-attr">&quot;script&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;./index.js&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 入口文件</span><br>      <span class="hljs-attr">&quot;env&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-comment">// 环境</span><br>        <span class="hljs-attr">&quot;NODE_ENV&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;development&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;env_production&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;NODE_ENV&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;production&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;instances&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 启用多少个实例</span><br>      <span class="hljs-attr">&quot;exec_mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cluster&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 应用程序启动模式，这里设置的是cluster_mode（集群），默认是fork</span><br>      <span class="hljs-attr">&quot;max_restarts&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 设置应用程序异常退出重启的次数，默认15次（从0开始计数）</span><br>      <span class="hljs-attr">&quot;restart_delay&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-number">5000</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 异常重启情况下，延时重启时间</span><br>      <span class="hljs-attr">&quot;log_date_format&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;YYYY-MM-DD HH:mm Z&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;combine_logs&quot;</span> <span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;log_file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;yourpath&gt;/combined.outerr.log&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 日志目录</span><br>      <span class="hljs-attr">&quot;out_file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;yourpath&gt;/out.log&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;error_file&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;yourpath&gt;/err.log&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：<code>pm2 restart</code>命令不会重新进行 配置文件 需要关掉重启。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/NodeJs/" class="category-chain-item">NodeJs</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/PM2/">#PM2</a>
+      
+    </div>
+  
+</div>
+
+
+              
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/p/fb0b7d1a/" title="Centos7 安装 JumpServer">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Centos7 安装 JumpServer</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/p/fe29ef0f/" title="Hexo常用命令详解">
+                        <span class="hidden-mobile">Hexo常用命令详解</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"gQw8yUDV2P7UDDa0kWFtdd1L-gzGzoHsz","appKey":"pdFRP96RNiQVFHfyzX1Cwgjl","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

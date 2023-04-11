@@ -63,7 +63,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"2fcd990263402ceea42af6e925f6bf23","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"2fcd990263402ceea42af6e925f6bf23","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -137,7 +137,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -149,7 +149,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -161,7 +161,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -173,7 +173,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -185,7 +185,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
@@ -193,15 +193,16 @@
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+              <i class="iconfont icon-search"></i>
             </a>
           </li>
           
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -268,7 +269,7 @@
       
         <a href="/categories/Python/" class="category-count col-2 col-md-1 col-xm-1">
           <i class="iconfont icon-articles"></i>
-          <span>3</span>
+          <span>6</span>
         </a>
       
       <div class="category-collapse collapse " id="collapse-a7f5f35426b927411fc9231b56382173"
@@ -278,6 +279,33 @@
           
   <div class="category-post-list">
     
+    
+      
+      
+        <a href="/p/3b76e853/" title="Python下requests库使用socks5代理"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Python下requests库使用socks5代理</span>
+        </a>
+      
+    
+      
+      
+        <a href="/p/cb58a7d0/" title="Python安包报错ERROR:Could not find+a+version……解决方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Python安包报错ERROR:Could not find+a+version……解决方法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/p/4ff9djj23a/" title="Celery5.2.7版本配置详解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Celery5.2.7版本配置详解</span>
+        </a>
+      
     
       
       
@@ -377,6 +405,57 @@
     
     <div class="category row nomargin-x">
       <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Centos"
+        id="heading-144f1ae8116862510e8e02fa0436826c" role="tab" data-toggle="collapse" href="#collapse-144f1ae8116862510e8e02fa0436826c"
+        aria-expanded="false"
+      >
+        Centos
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/Centos/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-144f1ae8116862510e8e02fa0436826c"
+           role="tabpanel" aria-labelledby="heading-144f1ae8116862510e8e02fa0436826c">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/p/fb0b7d19/" title="CentOS7搭建SOCKS5代理服务器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">CentOS7搭建SOCKS5代理服务器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/p/3b76e851/" title="Centos7同步时间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Centos7同步时间</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
           list-group-item category-item-action col-10 col-md-11 col-xm-11" title="笔记"
         id="heading-7051dc52c184c205e39aa54b4664ae9b" role="tab" data-toggle="collapse" href="#collapse-7051dc52c184c205e39aa54b4664ae9b"
         aria-expanded="false"
@@ -388,7 +467,7 @@
       
         <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-count col-2 col-md-1 col-xm-1">
           <i class="iconfont icon-articles"></i>
-          <span>1</span>
+          <span>2</span>
         </a>
       
       <div class="category-collapse collapse " id="collapse-7051dc52c184c205e39aa54b4664ae9b"
@@ -405,6 +484,66 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">Centos7 安装 JumpServer</span>
+        </a>
+      
+    
+      
+      
+        <a href="/p/fe29ef0f/" title="Hexo常用命令详解"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo常用命令详解</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="NodeJs"
+        id="heading-cfb3cb5f6453b477f4d8c7872503b3b9" role="tab" data-toggle="collapse" href="#collapse-cfb3cb5f6453b477f4d8c7872503b3b9"
+        aria-expanded="false"
+      >
+        NodeJs
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/NodeJs/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>2</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-cfb3cb5f6453b477f4d8c7872503b3b9"
+           role="tabpanel" aria-labelledby="heading-cfb3cb5f6453b477f4d8c7872503b3b9">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/p/e4be183c/" title="PM2命令使用方法总结"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">PM2命令使用方法总结</span>
+        </a>
+      
+    
+      
+      
+        <a href="/p/3b76e85d/" title="NodeJs服务后台持续运行三种方法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">NodeJs服务后台持续运行三种方法</span>
         </a>
       
     
@@ -531,6 +670,48 @@
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">网址记录</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item collapsed
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="window"
+        id="heading-05b8c74cbd96fbf2de4c1a352702fbf4" role="tab" data-toggle="collapse" href="#collapse-05b8c74cbd96fbf2de4c1a352702fbf4"
+        aria-expanded="false"
+      >
+        window
+        <span class="list-group-count"></span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+        <a href="/categories/window/" class="category-count col-2 col-md-1 col-xm-1">
+          <i class="iconfont icon-articles"></i>
+          <span>1</span>
+        </a>
+      
+      <div class="category-collapse collapse " id="collapse-05b8c74cbd96fbf2de4c1a352702fbf4"
+           role="tabpanel" aria-labelledby="heading-05b8c74cbd96fbf2de4c1a352702fbf4">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/p/a60073f6/" title="命令行下windows防火墙操作"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">命令行下windows防火墙操作</span>
         </a>
       
     

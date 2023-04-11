@@ -63,7 +63,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"2fcd990263402ceea42af6e925f6bf23","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"2fcd990263402ceea42af6e925f6bf23","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -137,7 +137,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                <span>首页</span>
               </a>
             </li>
           
@@ -149,7 +149,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                <span>归档</span>
               </a>
             </li>
           
@@ -161,7 +161,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                <span>分类</span>
               </a>
             </li>
           
@@ -173,7 +173,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                <span>标签</span>
               </a>
             </li>
           
@@ -185,7 +185,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                <span>关于</span>
               </a>
             </li>
           
@@ -193,15 +193,16 @@
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+              <i class="iconfont icon-search"></i>
             </a>
           </li>
           
         
         
           <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
           </li>
         
       </ul>
@@ -249,6 +250,416 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/p/fb0b7d19/" target="_self">
+          <img src="https://image.chensav.top/blog/fb0b7d19.jpg" srcset="/img/loading.gif" lazyload alt="CentOS7搭建SOCKS5代理服务器">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/fb0b7d19/" target="_self">
+          CentOS7搭建SOCKS5代理服务器
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/p/fb0b7d19/" target="_self">
+        <div>
+          安装12345678910# 安装依赖扩展yum install -y gcc openldap-devel pam-devel openssl-devel# 下载ss5包wget http://jaist.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gztar -vzx -f ss5-3.8.9-8.tar.gzcd ss
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-10 13:47" pubdate>
+              2023-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Centos/" class="category-chain-item">Centos</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos7/">#Centos7</a>
+            
+              <a href="/tags/%E4%BB%A3%E7%90%86/">#代理</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/p/3b76e851/" target="_self">
+          <img src="https://image.chensav.top/blog/3b76e851.jpg" srcset="/img/loading.gif" lazyload alt="Centos7同步时间">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3b76e851/" target="_self">
+          Centos7同步时间
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/p/3b76e851/" target="_self">
+        <div>
+          使用ntpdate同步时间目前比较常用的做法就是使用ntpdate命令来同步时间，使用方法如下：另外再分享下几个常用的ntp server，如果需要更多可以前往：http://www.ntp.org.cn获取 123456#安装ntpdateyum -y install ntpdate#同步时间ntpdate -u  pool.ntp.org#同步完成后,date命令查看时间是否正确date  使
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-10 09:08" pubdate>
+              2023-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Centos/" class="category-chain-item">Centos</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Centos/">#Centos</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/p/3b76e853/" target="_self">
+          <img src="https://image.chensav.top/blog/3b76e853.jpg" srcset="/img/loading.gif" lazyload alt="Python下requests库使用socks5代理">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/3b76e853/" target="_self">
+          Python下requests库使用socks5代理
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/p/3b76e853/" target="_self">
+        <div>
+          使用socks5代理 安装依赖pip install requests requests[socks]  123456```Pythonimport requests session = requests.session()                session.proxies = &#123;&#x27;https&#x27;: f&#x27;socks5://&#123;ip&#125
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-10 09:03" pubdate>
+              2023-04-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+              <a href="/tags/requests/">#requests</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/p/cb58a7d0/" target="_self">
+          <img src="https://image.chensav.top/blog/cb58a7d0.jpg" srcset="/img/loading.gif" lazyload alt="Python安包报错ERROR:Could not find+a+version……解决方法">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/cb58a7d0/" target="_self">
+          Python安包报错ERROR:Could not find+a+version……解决方法
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/p/cb58a7d0/" target="_self">
+        <div>
+          问题描述1ERROR: Could not find a version that satisfies the requirement tensorflow==2.0.0 (from versions: none)  解决方法12# 不止要选择pip源，还要信任它的来源，只完成第一步是不可以的喽pip install fonttools -i http://pypi.douban.com/simp
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-08 14:30" pubdate>
+              2023-04-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Python/">#Python</a>
+            
+              <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/p/a60073f6/" target="_self">
+          <img src="https://image.chensav.top/blog/a60073f6.jpg" srcset="/img/loading.gif" lazyload alt="命令行下windows防火墙操作">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/a60073f6/" target="_self">
+          命令行下windows防火墙操作
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/p/a60073f6/" target="_self">
+        <div>
+          设置防火墙服务为自动1sc config sharedaccess start=auto  开启防火墙服务1net start sharedaccess   开启端口1netsh advfirewall firewall add rule name=&quot;mysql&quot; dir=in protocol=tcp localport=3306 action=allow
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-08 14:13" pubdate>
+              2023-04-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/window/" class="category-chain-item">window</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E9%98%B2%E7%81%AB%E5%A2%99/">#防火墙</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/p/4ff9djj23a/" target="_self">
+          <img src="https://image.chensav.top/blog/4ff9dde3.png" srcset="/img/loading.gif" lazyload alt="Celery5.2.7版本配置详解">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/p/4ff9djj23a/" target="_self">
+          Celery5.2.7版本配置详解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/p/4ff9djj23a/" target="_self">
+        <div>
+          常规配置123456789101112131415161718192021222324252627282930313233# 获取任务队列broker_url=# 保存任务队列result_backend=# 接受内容格式accept_content = [&#x27;json&#x27;]# 保存数据格式化方式result_accept_content = [&#x27;json&#x27;]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-17 15:05" pubdate>
+              2022-11-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Celery/">#Celery</a>
+            
+              <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -524,419 +935,13 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/p/aa90cabc/" target="_self">
-          <img src="https://image.chensav.top/blog/aa90cabc.png" srcset="/img/loading.gif" lazyload alt="使用Pyinstaller打包EXE">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/aa90cabc/" target="_self">
-          使用Pyinstaller打包EXE
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/p/aa90cabc/" target="_self">
-        <div>
-          安装 pyinstaller 库1pip install pyinstaller  使用 pyinstaller 打包选项参数        选项 描述   -h，–help 显示帮助信息   -v，–version 显示版本号   –distpath DIR 指定打包后的程序存放目录，默认存放在当前目录下的dist目录   –workpath WORKPATH 为输出的所有临时文件指定存放目录
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-27 13:51" pubdate>
-              2022-10-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Python/" class="category-chain-item">Python</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
-            
-              <a href="/tags/python%E5%AE%89%E8%A3%85/">#python安装</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/p/6297bd55/" target="_self">
-          <img src="https://image.chensav.top/blog/6297bd55.jpg" srcset="/img/loading.gif" lazyload alt="Laravel项目创建">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/6297bd55/" target="_self">
-          Laravel项目创建
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/p/6297bd55/" target="_self">
-        <div>
-          安装laravel12composer create-project laravel/laravel Laravel --prefer-dist &quot;8.5.*&quot;  安装 Dcat Admin 后台123456composer require dcat/laravel-admin:&quot;2.*&quot; -vvvphp artisan admin:publishphp a
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-27 11:13" pubdate>
-              2022-10-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/PHP/" class="category-chain-item">PHP</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Laravel/">#Laravel</a>
-            
-              <a href="/tags/%E8%AE%B0%E5%BD%95/">#记录</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/p/78db8bbb/" target="_self">
-          <img src="https://image.chensav.top/blog/78db8bbb.jpg" srcset="/img/loading.gif" lazyload alt="网址记录">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/78db8bbb/" target="_self">
-          网址记录
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/p/78db8bbb/" target="_self">
-        <div>
-          图片工具不错的配图网址好用的配图网址图片压缩网址
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-27 11:07" pubdate>
-              2022-10-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E8%AE%B0%E5%BD%95/" class="category-chain-item">记录</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E9%9A%8F%E7%AC%94/">#随笔</a>
-            
-              <a href="/tags/%E7%AC%94%E8%AE%B0/">#笔记</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/p/4ff9dde3/" target="_self">
-          <img src="https://image.chensav.top/blog/4ff9dde3.png" srcset="/img/loading.gif" lazyload alt="Centos安装配置Docker">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/4ff9dde3/" target="_self">
-          Centos安装配置Docker
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/p/4ff9dde3/" target="_self">
-        <div>
-          卸载旧版本的Docker12345678910yum remove docker \                  docker-client \                  docker-client-latest \                  docker-common \                  docker-latest \                  d
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-27 10:58" pubdate>
-              2022-10-27
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Docker/" class="category-chain-item">Docker</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos/">#Centos</a>
-            
-              <a href="/tags/Docker/">#Docker</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/p/f79433d6/" target="_self">
-          <img src="https://image.chensav.top/blog/f79433d6.png" srcset="/img/loading.gif" lazyload alt="Centos安装Python3.8">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/f79433d6/" target="_self">
-          Centos安装Python3.8
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/p/f79433d6/" target="_self">
-        <div>
-          新买一台服务器通常是只安装了python2.7版本的，我想安装python3.8版本，详细安装教程如下  安装依赖包编译python源码的时候需要用到 1yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make libffi-devel
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-26 18:32" pubdate>
-              2022-10-26
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/Python/" class="category-chain-item">Python</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Centos/">#Centos</a>
-            
-              <a href="/tags/%E5%AE%89%E8%A3%85/">#安装</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/p/fb0b7d1a/" target="_self">
-          <img src="https://image.chensav.top/blog/fb0b7d1a.jpg" srcset="/img/loading.gif" lazyload alt="Centos7 安装 JumpServer">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/p/fb0b7d1a/" target="_self">
-          Centos7 安装 JumpServer
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/p/fb0b7d1a/" target="_self">
-        <div>
-          官网地址安装部署12# 执行一键部署脚本curl -sSL https://github.com/jumpserver/jumpserver/releases/download/v2.6.1/quick_start.sh | sh  配置文件1234567891011121314151617181920212223242526272829303132333435363738394041424344
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-20 18:47" pubdate>
-              2022-10-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
 
 
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
 
 
 
