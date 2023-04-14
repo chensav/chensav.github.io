@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>win10环境下永久修改Python的pip源</title>
+    <link href="/p/b56d2a25/"/>
+    <url>/p/b56d2a25/</url>
+    
+    <content type="html"><![CDATA[<h4 id="首先在window的文件夹窗口输入-：-APPDATA-，回车，打开文件夹"><a href="#首先在window的文件夹窗口输入-：-APPDATA-，回车，打开文件夹" class="headerlink" title="首先在window的文件夹窗口输入 ： %APPDATA% ，回车，打开文件夹"></a>首先在window的文件夹窗口输入 ： %APPDATA% ，回车，打开文件夹</h4><h4 id="然后在底下新建pip文件夹，然后到pip文件夹里面去新建个pip-ini-然后再里面输入内容"><a href="#然后在底下新建pip文件夹，然后到pip文件夹里面去新建个pip-ini-然后再里面输入内容" class="headerlink" title="然后在底下新建pip文件夹，然后到pip文件夹里面去新建个pip.ini,然后再里面输入内容"></a>然后在底下新建pip文件夹，然后到pip文件夹里面去新建个pip.ini,然后再里面输入内容</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[global]</span><br><span class="hljs-attr">index-url</span> = https://mirrors.aliyun.com/pypi/simple/<br><br><span class="hljs-section">[install]</span><br><span class="hljs-attr">trusted-host</span>=mirrors.aliyun.com<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>pip</tag>
+      
+      <tag>windows</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CentOS7搭建SOCKS5代理服务器</title>
     <link href="/p/fb0b7d19/"/>
     <url>/p/fb0b7d19/</url>
